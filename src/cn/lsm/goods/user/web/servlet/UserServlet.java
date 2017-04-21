@@ -26,8 +26,6 @@ import cn.lsm.goods.user.service.exception.UserException;
 public class UserServlet extends BaseServlet {
 
 	private UserService userService = new UserService();
-	
-	
 
 	/*
 	 * ajax用户名是否注册校验
@@ -147,9 +145,9 @@ public class UserServlet extends BaseServlet {
 		// 5.验证码校验
 		String verifyCode = formUser.getVerifyCode();
 		String vcode = (String) session.getAttribute("vCode");
-		if(verifyCode == null || verifyCode.trim().isEmpty()) {
+		if (verifyCode == null || verifyCode.trim().isEmpty()) {
 			errors.put("verifyCode", "验证码不能为空！");
-		} else if(!verifyCode.equalsIgnoreCase(vcode)) {
+		} else if (!verifyCode.equalsIgnoreCase(vcode)) {
 			errors.put("verifyCode", "验证码错误！");
 		}
 
@@ -187,41 +185,39 @@ public class UserServlet extends BaseServlet {
 
 	/**
 	 * 修改密码
+	 * 
 	 * @param req
 	 * @param resp
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	public String updatePassword(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public String updatePassword(HttpServletRequest req,
+			HttpServletResponse resp) throws ServletException, IOException {
 		/*
-		 * 1.封装表单数据到user中
-		 * 2.从session中获取到uid
+		 * 1.封装表单数据到user中 2.从session中获取到uid
 		 * 3.使用uid和表单中的oldpass和newpass来调用service
-		 * 	-->如果出现异常，保存异常信息到request中，转发到pwd.jsp
-		 * 4.保存成功信息到request中
-		 * 5.转发到msg.jsp
+		 * -->如果出现异常，保存异常信息到request中，转发到pwd.jsp 4.保存成功信息到request中 5.转发到msg.jsp
 		 */
-		User formUser =CommonUtils.toBean(req.getParameterMap(), User.class);
-		User user=(User) req.getSession().getAttribute("sessionUser");
-		if(user==null){
+		User formUser = CommonUtils.toBean(req.getParameterMap(), User.class);
+		User user = (User) req.getSession().getAttribute("sessionUser");
+		if (user == null) {
 			req.setAttribute("msg", "您还没有登录");
 			return "f:/jsps/user/login.jsp";
 		}
 		try {
-			userService.updatePassword(user.getUid(), formUser.getNewpass(), 
+			userService.updatePassword(user.getUid(), formUser.getNewpass(),
 					formUser.getLoginpass());
 			req.setAttribute("msg", "修改密码成功");
 			req.setAttribute("code", "success");
 			return "f:/jsps/msg.jsp";
 		} catch (UserException e) {
-			req.setAttribute("msg", e.getMessage());//保存异常信息到request
-			req.setAttribute("user", formUser);//为了回显
+			req.setAttribute("msg", e.getMessage());// 保存异常信息到request
+			req.setAttribute("user", formUser);// 为了回显
 			return "f:/jsps/user/pwd.jsp";
 		}
 	}
-	
+
 	/**
 	 * 登录的方法
 	 * 
@@ -284,9 +280,10 @@ public class UserServlet extends BaseServlet {
 		Map<String, String> errors = new HashMap<String, String>();
 		return errors;
 	}
-	
+
 	/**
 	 * 推出功能
+	 * 
 	 * @param req
 	 * @param resp
 	 * @return

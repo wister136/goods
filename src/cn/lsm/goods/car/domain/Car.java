@@ -17,11 +17,31 @@ public class Car {
 	private Category category;//所属的分类
 	private String image_w;//大图路径
 	private String image_b;//小图路径
+	
 	public Category getCategory() {
 		return category;
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public String getBname() {
+		return bname;
+	}
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public String getBid() {
+		return bid;
+	}
+	public void setBid(String bid) {
+		this.bid = bid;
 	}
 	public String getImage_w() {
 		return image_w;
@@ -34,24 +54,6 @@ public class Car {
 	}
 	public void setImage_b(String image_b) {
 		this.image_b = image_b;
-	}
-	public String getBid() {
-		return bid;
-	}
-	public void setBid(String bid) {
-		this.bid = bid;
-	}
-	public String getBname() {
-		return bname;
-	}
-	public void setBname(String bname) {
-		this.bname = bname;
-	}
-	public String getBrand() {
-		return brand;
-	}
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 	public double getPrice() {
 		return price;
