@@ -19,9 +19,9 @@
   </head>
   
   <body>
-<h1 align="center">图书管理</h1>
+<h1 align="center">车辆管理</h1>
 <p align="center">
-<a href="<c:url value='/adminjsps/admin/book/add.jsp'/>" style="margin: 20px; font-size: 20px;">添加图书</a>
+<a href="<c:url value='/admin/AdminCarServlet?method=addPre'/>" style="margin: 20px; font-size: 20px;">添加车辆</a>
 <a href="<c:url value='/adminjsps/admin/book/gj.jsp'/>" style="margin: 20px; font-size: 20px;">高级搜索</a>
 </p>
   </body>

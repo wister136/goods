@@ -31,16 +31,26 @@
 	});
 </script>
   </head>
-  
+  <p> </p>
+  <p> </p>
+  <p> </p>
   <body>
 	<div class="main">
-	  <div><img src="<c:url value='/images/logo.png'/>" /></div>
+	  <div></div>
 	  <div>
-	    <div class="imageDiv"><img class="img" src="<c:url value='/images/zj.png'/>"/></div>
+		
+	    <div class="imageDiv">
+
+	     <img src="<c:url value='/images/logo.png'/>" style="margin-left:60px;" />
+
+	     <p> </p>
+	     <p> </p>
+	    <img class="img" src="<c:url value='/images/zj.png'/>"/>
+	    </div>
         <div class="login1">
 	      <div class="login2">
             <div class="loginTopDiv">
-              <span class="loginTop">传智会员登录</span>
+              <span class="loginTop">飞马会员登录</span>
               <span>
                 <a href="<c:url value='/jsps/user/regist.jsp'/>" class="registBtn"></a>
               </span>

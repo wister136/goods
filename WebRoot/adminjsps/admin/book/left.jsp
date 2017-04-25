@@ -15,36 +15,36 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
 	<link rel="stylesheet" type="text/css" href="<c:url value='/adminjsps/admin/css/book/left.css'/>">
+	 <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
 	<link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>" type="text/css" media="all">
 <script language="javascript">
-var bar = new Q6MenuBar("bar", "图书分类");
+/*
+*1.对象名必须与第一个参数相同！
+*2.第二个参数是显示在菜单上的大标题
+*/
+var bar = new Q6MenuBar("bar", "汽车分类");
+$(function() {
+	bar.colorStyle = 2;//制定配色的背景样式，一共1.2.3.4
+	bar.config.imgDir = "<c:url value='/menu/img/'/>";//小工具所需图片的路劲
+	bar.config.radioButton=true;//是否排斥，多了一级分类是否排斥
 
-function load() {
-	bar.colorStyle = 2;
-	bar.config.imgDir = "<c:url value='/menu/img/'/>";
-	bar.config.radioButton=true;
-
-	bar.add("程序设计", "Java Javascript", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("程序设计", "JSP", "/goods/jsps/book/list.jsp", "body");
-	bar.add("程序设计", "C C++ VC VC++", "/goods/adminjsps/admin/book/list.jsp", "body");
+	/*
+	1.程序设计：一级分类名称
+	2.java javascript：二级分类名称
+	3./goods/jsps/book/list.jsp:点击二级分类后连接到的URL
+	4.body:链接的内容在哪个框架页显示
+	*/
+	<c:forEach items="${parents}" var="parent">
+		<c:forEach items="${parent.children}" var="child">
+			bar.add("${parent.cname}", "${child.cname}", "/goods/adminjsps/admin/book/list.jsp", "body");
+		</c:forEach>
+	</c:forEach>
 	
-	bar.add("办公室用书", "微软Office", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("办公室用书", "计算机初级入门", "/goods/jsps/book/list.jsp", "body");
-	
-	bar.add("图形 图像 多媒体", "Photoshop", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("图形 图像 多媒体", "3DS MAX", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("图形 图像 多媒体", "网页设计", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("图形 图像 多媒体", "Flush", "/goods/adminjsps/admin/book/list.jsp", "body");
-	
-	bar.add("操作系统/系统开发", "Windows", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("操作系统/系统开发", "Linux", "/goods/adminjsps/admin/book/list.jsp", "body");
-	bar.add("操作系统/系统开发", "系统开发", "/goods/adminjsps/admin/book/list.jsp", "body");
-	  
-	var d = document.getElementById("menu");
-	d.innerHTML = bar.toString();
-}
+	$("#menu").html(bar.toString());
+});
 </script>
   </head>
   

@@ -40,6 +40,16 @@
     <servlet-name>AdminCategoryServlet</servlet-name>
     <servlet-class>cn.lsm.goods.admin.category.web.servlet.AdminCategoryServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminCarServlet</servlet-name>
+    <servlet-class>cn.lsm.goods.admin.car.web.servlet.AdminCarServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminAddCarServlet</servlet-name>
+    <servlet-class>cn.lsm.goods.admin.car.web.servlet.AdminAddCarServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -64,6 +74,14 @@
   <servlet-mapping>
     <servlet-name>AdminCategoryServlet</servlet-name>
     <url-pattern>/admin/AdminCategoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminCarServlet</servlet-name>
+    <url-pattern>/admin/AdminCarServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminAddCarServlet</servlet-name>
+    <url-pattern>/admin/AdminAddCarServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

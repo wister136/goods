@@ -113,6 +113,18 @@ public class CarDao {
 		return null;
 	}
 
+	/**
+	 * 查询制定分类下汽车的个数
+	 * @param cid
+	 * @return
+	 * @throws SQLException 
+	 */
+	public int findCarCountByCategory(String cid) throws SQLException{
+		String sql="select count(*) from t_car where cid=?";
+		Number number=(Number)qr.query(sql, new ScalarHandler(),cid);
+		return number==null ? 0 : number.intValue();
+	}
+	
 	public static void main(String[] args) {
 		CarDao caoDao = new CarDao();
 		List<Expression> exprList = new ArrayList<Expression>();
@@ -121,5 +133,19 @@ public class CarDao {
 		exprList.add(new Expression("brand", "is null", null));
 
 		// caoDao.findByCriteria(exprList, 10);
+	}
+
+	/**
+	 * 添加车辆
+	 * @param car
+	 * @throws SQLException 
+	 */
+	public void add(Car car) throws SQLException {
+		String sql="insert into t_car(bid,bname,brand,price,currprice,discount,manufacturer,registration," +
+				"timetomarket,carkil,registarea,cid,image_w,image_b) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		Object[] params={car.getBid(),car.getBname(),car.getBrand(),car.getPrice(),car.getCurrprice(),car.getDiscount(),
+							car.getManufacturer(),car.getRegistration(),car.getTimetomarket(),car.getCarkil(),car.getRegistarea(),
+							car.getCategory().getCid(),car.getImage_w(),car.getImage_b()};
+		qr.update(sql,params);
 	}
 }
